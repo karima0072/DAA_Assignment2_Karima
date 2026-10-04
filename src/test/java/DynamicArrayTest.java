@@ -101,4 +101,23 @@ public class DynamicArrayTest {
         assertThrows(IndexOutOfBoundsException.class,
                 () -> array.add(-1, 10));
     }
+    @Test
+    void testRandomDataAgainstArrayList() {
+        DynamicArray array = new DynamicArray();
+        java.util.ArrayList<Integer> expected = new java.util.ArrayList<>();
+        java.util.Random random = new java.util.Random(42);
+
+        for (int i = 0; i < 1000; i++) {
+            int value = random.nextInt();
+
+            array.add(value);
+            expected.add(value);
+        }
+
+        assertEquals(expected.size(), array.size());
+
+        for (int i = 0; i < expected.size(); i++) {
+            assertEquals(expected.get(i).intValue(), array.get(i));
+        }
+    }
 }

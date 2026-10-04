@@ -117,4 +117,23 @@ public class MyLinkedListTest {
         assertThrows(IndexOutOfBoundsException.class,
                 () -> list.get(1));
     }
+    @Test
+    void testRandomDataAgainstLinkedList() {
+        MyLinkedList list = new MyLinkedList();
+        java.util.LinkedList<Integer> expected = new java.util.LinkedList<>();
+        java.util.Random random = new java.util.Random(42);
+
+        for (int i = 0; i < 1000; i++) {
+            int value = random.nextInt();
+
+            list.add(value);
+            expected.add(value);
+        }
+
+        assertEquals(expected.size(), list.size());
+
+        for (int i = 0; i < expected.size(); i++) {
+            assertEquals(expected.get(i).intValue(), list.get(i));
+        }
+    }
 }
