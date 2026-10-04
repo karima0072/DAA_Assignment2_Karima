@@ -133,7 +133,6 @@ The benchmark tests the following input sizes:
 100,000
 ```
 
-The same random seed is used for reproducibility:
 
 The same random seed is used for reproducibility: `new Random(42)`.
 

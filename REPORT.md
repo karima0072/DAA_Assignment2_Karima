@@ -94,7 +94,6 @@ W1 performs 10,000 random `get(index)` operations on DynamicArray and MyLinkedLi
 ![W1 Moves](results/plots/w1_moves.png)
 
 ![W1 Comparisons](results/plots/w1_comparisons.png)
-
 DynamicArray remains fast because an array provides direct indexed access. MyLinkedList becomes much slower as `n` increases because it must follow nodes from the head to reach a requested index.
 
 ### W2 – Search
@@ -118,8 +117,9 @@ W3 performs 1,000 insertions followed by 1,000 removals. It was tested at the he
 
 ![W3 Head Time](results/plots/w3_head_time.png)
 
-![W3 Head Moves](results/plots/w3_head_moves.png)
 ![W3 Head Steps](results/plots/w3_head_steps.png)
+
+![W3 Head Moves](results/plots/w3_head_moves.png)
 
 ![W3 Head Comparisons](results/plots/w3_head_comparisons.png)
 
@@ -127,9 +127,11 @@ At the head, MyLinkedList performs operations efficiently because no traversal i
 
 #### Middle
 
-![W3 Middle Time](results/plots/w3_middle_time.png)
-
 ![W3 Middle Steps](results/plots/w3_middle_steps.png)
+
+![W3 Middle Moves](results/plots/w3_middle_moves.png)
+
+![W3 Middle Comparisons](results/plots/w3_middle_comparisons.png)
 
 In the middle variant, MyLinkedList must traverse approximately half of the list to find the required position. DynamicArray also performs many shifts, but contiguous array storage gives it better cache locality.
 
@@ -138,9 +140,11 @@ In the middle variant, MyLinkedList must traverse approximately half of the list
 W4 inserts `n` values into MinHeap and then repeatedly calls `extractMin()` until the heap is empty. The benchmark also checks that extracted values are in non-decreasing order.
 
 ![W4 Time](results/plots/w4_time.png)
+![W4 Steps](results/plots/w4_steps.png)
+
+![W4 Moves](results/plots/w4_moves.png)
 
 ![W4 Comparisons](results/plots/w4_comparisons.png)
-
 The results show the expected growth caused by heap operations. `extractMin()` may perform bubble-down through the height of the binary heap.
 
 
