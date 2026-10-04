@@ -384,13 +384,15 @@ public class Benchmark {
 
         int[] values = generateData(n);
         double[] times = new double[RUNS];
+
+        // Warm-up run
         MinHeap warmup = new MinHeap();
+        warmup.getMetrics().reset();
 
         for (int value : values) {
             warmup.insert(value);
         }
 
-        warmup.getMetrics().reset();
         extractAndCheck(warmup);
 
         long steps = 0;
@@ -400,15 +402,16 @@ public class Benchmark {
         for (int run = 0; run < RUNS; run++) {
 
             MinHeap heap = new MinHeap();
-
-            for (int value : values) {
-                heap.insert(value);
-            }
-
             heap.getMetrics().reset();
 
             long start = System.nanoTime();
 
+            // Insert n values
+            for (int value : values) {
+                heap.insert(value);
+            }
+
+            // Extract n values and verify sorted order
             extractAndCheck(heap);
 
             long end = System.nanoTime();
@@ -423,8 +426,15 @@ public class Benchmark {
         }
 
         writeResult(
-                writer, "W4", "-", "MinHeap",
-                n, median(times), steps, moves, comparisons
+                writer,
+                "W4",
+                "-",
+                "MinHeap",
+                n,
+                median(times),
+                steps,
+                moves,
+                comparisons
         );
     }
 
